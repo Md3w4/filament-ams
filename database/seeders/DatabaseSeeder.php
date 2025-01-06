@@ -9,6 +9,7 @@ use App\Models\Office;
 use App\Models\Schedule;
 use App\Models\OvertimeSetting;
 use Illuminate\Database\Seeder;
+use Database\Seeders\OfficeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,11 +36,12 @@ class DatabaseSeeder extends Seeder
 
 
         // Create Office
-        $office = Office::factory()->create([
-            'name' => 'Kantor Pusat',
-            'latitude' => -6.2,  // Set sesuai lokasi testing
-            'longitude' => 106.8,
-        ]);
+        $office = $this->call(OfficeSeeder::class);
+        // $office = Office::factory()->create([
+        //     'name' => 'Kantor Pusat',
+        //     'latitude' => -6.2,  // Set sesuai lokasi testing
+        //     'longitude' => 106.8,
+        // ]);
 
         // Create Shift
         $shift = Shift::factory()->create([
@@ -56,11 +58,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create User & Schedule
-        $user = User::factory()->create([
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        $user = $this->call(UserSeeder::class);
+        // $user = User::factory()->create([
+        //     'name' => 'John Doe',
+        //     'email' => 'john@example.com',
+        //     'password' => bcrypt('password'),
+        // ]);
 
         Schedule::factory()->create([
             'user_id' => $user->id,

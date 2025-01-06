@@ -15,10 +15,18 @@ class ShiftSeeder extends Seeder
     {
         Shift::factory()->create([
             'name' => 'Pagi',
-            'start_time' => '08:00:00',
+            'start_time' => '9:00:00',
             'end_time' => '17:00:00',
-            'late_threshold' => '09:00:00',
-            'early_leave_threshold' => '16:00:00',
+            'default_late_threshold' => '09:15:00',
+            'default_early_leave_threshold' => '16:45:00',
+        ]);
+
+        Shift::factory()->create([
+            'name' => 'Lembur',
+            'start_time' => '09:00:00',
+            'end_time' => '21:00:00',
+            'default_late_threshold' => '09:15:00',
+            'default_early_leave_threshold' => '20:45:00',
         ]);
     }
 }
